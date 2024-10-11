@@ -1,5 +1,5 @@
 import express from "express";
-import petsRouter from "./routes/petRoutes";
+import { petsRouter } from "./routes/petRoutes";
 
 const app = express();
 const port = 3000;
