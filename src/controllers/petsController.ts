@@ -18,7 +18,7 @@ export const getPetById = async (req: Request, res: Response) => {
 
 export const updatePetById = async (req: Request, res: Response) => {
   const petID = parseInt(req.params.petID)
-  res.status(204).json(await service.updatePet(petID, ));
+  res.status(204).json(await service.updatePet(petID, req.body ));
 };
 
 export const deletePetById = async (req: Request, res: Response) => {
