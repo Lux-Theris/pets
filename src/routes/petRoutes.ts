@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {
-  createPets,
+  createPet,
   deletePetById,
   getPetById,
   listPets,
@@ -9,7 +9,7 @@ import {
 
 export const petsRouter = Router()
   .get("/pets", listPets)
-  .post("/pets", createPets)
+  .post("/pets", createPet)
   .delete("/pets/:petID(\\d+)", deletePetById)
   .put("/pets/:petID(\\d+)", updatePetById)
   .get("/pets/:petID(\\d+)", getPetById);
