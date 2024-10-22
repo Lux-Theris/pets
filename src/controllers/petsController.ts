@@ -1,14 +1,15 @@
 import { Request, Response } from "express";
 import { PetsService } from "../services/petsService";
 
+
 const service = new PetsService();
 export const listPets = async (req: Request, res: Response) => {
   res.status(200).json(await service.fetchPets());
 };
 
 export const createPets = async (req: Request, res: Response) => {
-  const result = await service.createPet(req.body);
-  res.status(201).json(await service.createPet(result));
+  const createdPet = await service.createPet(req.body);
+  res.status(201).json(createdPet);
 };
 
 export const getPetById = async (req: Request, res: Response) => {

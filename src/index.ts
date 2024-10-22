@@ -1,13 +1,18 @@
-import express from "express";
+import "dotenv/config";
+import "express-async-errors";
+import express, { json } from "express";
+import { errorHandler } from "./middlewares/errorMidleware";
+import sequelize from "./config/database";
 import { petsRouter } from "./routes/petRoutes";
 
 const app = express();
 const port = 3000;
 
+app.use(json());
 app.use(petsRouter);
+app.use(errorHandler);
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+sequelize.sync({ force: true }).then(() => {
+  console.log("Database is synced");
+  app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
 });
-
-app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
